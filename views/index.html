@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Prediction of Stay of Patient</title>
+    <style>
+        body {
+            background-image:url("https://images.unsplash.com/photo-1538108149393-fbbd81895907?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG9zcGl0YWx8ZW58MHx8MHx8fDA%3D");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: #ccc;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        
+        h1 {
+            color: #333;
+            text-transform: capitalize;
+            background-color:white;
+            font-size:50px;
+            border: 2px solid black;
+            padding: 20px;
+            border-radius: 10px;
+
+        }
+
+        h2{
+        font-size:40px;
+
+        }
+        
+        form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 400px;
+            margin-top: 3%;
+            /* Push the form to the middle */
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: large;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-left: -9px;
+        }
+
+        #select{
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-left: -9px;
+}
+        
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-left: -9px;
+        }
+        
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="heading">
+        <h1>Stay Prediction of a Patient</h1>
+    </div>
+
+    <h2>
+        {% if result %} {{ result }} {% endif %}
+
+
+
+    </h2>
+
+    <!--    -->
+    <form method="post" action="/predict">
+
+        <label>Case ID</label><br>
+        <input type="number" name="case_id" required><br><br>
+
+        <label>Hospital Code</label><br>
+        <input type="number" name="Hospital_code" required><br><br>
+
+        <label>Ward Type</label><br>
+
+        <select name="Ward_Type" id="select">
+            <option value="select">----Select From Here----</option>
+            <option value="P">P</option>
+            <option value="Q">Q</option>
+            <option value="R">R</option>
+            <option value="S">S</option>
+            <option value="T">T</option>
+            <option value="U">U</option>
+        </select><br><br>
+
+        <label>Bed Grade</label><br>
+
+        <select name="Bed Grade" id="select">
+            <option value="select">----Select From Here----</option>
+            <option value="1">1.0</option>
+            <option value="2">2.0</option>
+            <option value="3">3.0</option>
+            <option value="4">4.0</option>
+        </select>  <br><br>
+
+        <label>City Code</label><br>
+        <input type="number" name="City_Code_Patient" required><br><br>
+
+        <label>Type of Admission</label><br>
+        <select name="Type of Admission" id="select">
+            <option value="select">----Select From Here----</option>
+            <option value="emergency">Emergency</option>
+            <option value="trauma">Trauma</option>
+            <option value="urgent">Urgent</option>
+        </select><br><br>
+
+
+        <label>Patient ID</label><br>
+        <input type="number" name="patientid" required><br><br>
+
+        <label>Age</label><br>
+        <input type="number" name="Age" required><br><br>
+
+        <label>Department</label><br>
+        <select name = "Department" id="select">
+            <option value="Select">----Select From Here----</option>
+            <option value="radiotherapy">RadioTherapy</option>
+            <option value="gynecology">Gynecology</option>
+            <option value="surgery">Surgery</option>
+            <option value="tb & chest disease">TB & Chest Disease</option>
+            <option value="anesthesia">Anesthesia</option>
+        </select>
+        <br><br>
+
+        <label>Visitors with Patient</label><br>
+        <input type="number" name="Visitors with patient" required><br><br>
+
+        <label>Severity of Illness</label><br>
+        <select name = "Severity of Illness" id="select">
+            <option value="Select">----Select From Here----</option>
+            <option value="extreme">Extreme</option>
+            <option value="moderate">Moderate</option>
+            <option value="minor">Minor</option>
+
+        </select><br><br>
+
+        <label>Admission_Deposit</label><br>
+        <input type="number" name="Admission_Deposit" required><br><br>
+
+        <label>Available Extra Rooms in Hospital</label><br>
+        <input type="number" name="Available Extra Rooms in Hospital" required><br><br>
+       
+
+        <input type="submit" value="Predict"><br><br>
+    </form>
+
+
+</body>
+
+</html>
